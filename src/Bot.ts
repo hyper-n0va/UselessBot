@@ -1,8 +1,7 @@
-import { Channel, Client, EmbedBuilder, Events, MessagePayload, TextChannel, User } from "discord.js";
+import { Client } from "discord.js";
 import dotenv from "dotenv";
-import { client, logger, rossEmbed } from "./constants";
+import { client, logger } from "./constants";
 import { importCommands } from "./Commandler";
-import users from "../config/ross.json";
 
 dotenv.config({ path:"./.env" });
 
@@ -72,24 +71,6 @@ async function ready(client: Client): Promise<void> {
             } catch (err) {
                 logger.error(err);
                 return;
-            }
-        }
-        const allReactions = reaction.message.reactions.cache
-        if (allReactions.hasAll("🪱", "🧠") && (reaction.emoji.name == "🧠" || reaction.emoji.name == "🪱")) {
-            const rossUsers = (users.users as string[]);
-            const currentGuild = reaction.message.guild;
-            if (currentGuild) {
-                rossUsers.forEach((rossUser) => {
-                    const resolvedUser = currentGuild.members.resolve(rossUser);
-                    if (resolvedUser) {
-                        resolvedUser.send({
-                            content: "Worms in the brain",
-                            embeds: [rossEmbed]
-                        });
-                        logger.info(`Sent Bob Ross to ${ rossUser }`)
-                    }
-                });
-                
             }
         }
     });

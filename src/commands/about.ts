@@ -13,9 +13,9 @@ export const CommandExecution = async (interaction: CommandInteraction) => {
 
     const githubEmbed = new EmbedBuilder()
         .setTitle("GitHub Repo")
-        .setURL("https://github.com/notpatrickadams/UselessBot")
+        .setURL("https://github.com/hyper-n0va/UselessBot")
         .setThumbnail("https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png")
-        .setDescription("https://github.com/notpatrickadams/UselessBot")
+        .setDescription("https://github.com/hyper-n0va/UselessBot")
         .toJSON();
     
     await interaction.reply({ ephemeral: true, embeds: [uselessBotEmbed, githubEmbed] });

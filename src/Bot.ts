@@ -47,23 +47,6 @@ async function ready(client: Client): Promise<void> {
         }
     });
 
-    client.on("messageCreate", (message) => {
-        if (!message.author.bot) {
-            if (message.content.toLowerCase().includes("sus")) {
-                logger.info(`Sus Reacted to a message from ${ message.author.username } in ${ message.guildId }`);
-                message.react("<:sus:1011595741631885342>");
-            }
-            if (message.content.toLowerCase().includes("lamp")) {
-                logger.info(`Moth Reacted to a message from ${ message.author.username } in ${ message.guildId }`);
-                message.react("<:moth:1011626571930542202>");
-            }
-            if (message.content.toLowerCase().includes("bread")) {
-                logger.info(`Bread Reacted to a message from ${ message.author.username } in ${ message.guildId }`);
-                message.react("🍞");
-            }
-        }
-    });
-
     client.on("messageReactionAdd", async (reaction) => {
         if (reaction.partial) {
             try {
